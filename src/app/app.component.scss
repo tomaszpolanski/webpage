@@ -1,18 +1,47 @@
-$header-height: 12rem;
+@import '../assets/styles/fonts.scss';
+@import '../assets/styles/blocks.scss';
+
+$headerHeight: 20rem;
+$avatar_size: 12rem;
 
 .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-image: url('../assets/droidcon.jpg');
+  background-image: url('../assets/images/droidcon.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  height: 20rem;
+  height: $headerHeight;
   color: black;
-  font-family: 'Rubik', sans-serif;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);  
   padding: .5rem 1rem;
+}
+
+.shadow {
+  @extend .no-print;
+  height: 1px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);  
+}
+
+.navbar {
+  min-width: 50%;
+  margin-top: auto;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.mainContainerFull {
+  @extend .mainContainer;
+  height: 100vh;
+}
+
+.contentWrapper {
+  display: flex;
+  flex: 1;
 }
 
 .aboutHeader {
@@ -23,20 +52,22 @@ $header-height: 12rem;
 
 .aboutHeaderTitle {
   z-index: 0;
-  margin-left: -($header-height / 2);
+  margin-left: -($avatar_size / 2);
   width: 100%;
-  background: #f9f734;
-  line-height: 200%;
+  background: $color_primary;
+  text-align: center;
 }
 
 .aboutHeaderTitleText {
-  padding-left: 1rem + ($header-height / 2);
+  @extend %biggestFont;
+  margin: 1rem 0;
+  padding-left: 1rem + ($avatar_size / 2);
   padding-right: 1rem;
 }
 
 .avatar {
-  height: $header-height;
+  height: $avatar_size;
   background: white;
-  border-radius: $header-height;
+  border-radius: $avatar_size;
   z-index: 1;
 }

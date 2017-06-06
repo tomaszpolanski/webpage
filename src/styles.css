@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Rubik");
+@import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One');
+
+button, a {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+html, body, h1 {
+  color: #000;
+  font-family: 'Rubik';
+  margin: 0;
+  padding: 0; }
+
+textarea, input, button, select {
+  font-family: inherit;
+  font-size: inherit; }
+
+body {
+  background-color: #FFFFFF; }
