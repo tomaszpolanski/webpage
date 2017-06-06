@@ -1,3 +1,4 @@
+$header-height: 12rem;
 
 .header {
   display: flex;
@@ -22,20 +23,20 @@
 
 .aboutHeaderTitle {
   z-index: 0;
-  margin-left: -(12rem / 2);
+  margin-left: -($header-height / 2);
   width: 100%;
   background: #f9f734;
   line-height: 200%;
 }
 
 .aboutHeaderTitleText {
-  padding-left: 1rem + (12rem / 2);
+  padding-left: 1rem + ($header-height / 2);
   padding-right: 1rem;
 }
 
 .avatar {
-  height: 12rem;
+  height: $header-height;
   background: white;
-  border-radius: 12rem;
+  border-radius: $header-height;
   z-index: 1;
 }
