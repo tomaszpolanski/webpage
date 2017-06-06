@@ -4,6 +4,7 @@ import { Observable } from 'RxJS/Rx';
 import 'rxjs/add/operator/map';
 
 export interface User {
+  name: string;
   avatar_url: string;
 }
 
@@ -15,6 +16,6 @@ export class GithubService {
   public githubUser() {
     return this.http
             .get(`https://api.github.com/users/tomaszpolanski`)
-            .map(response => response.json());
+            .map(response => <User>response.json());
   }
 }
