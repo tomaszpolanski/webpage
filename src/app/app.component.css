@@ -1,0 +1,41 @@
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('../assets/droidcon.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 20rem;
+  color: black;
+  font-family: 'Rubik', sans-serif;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);  
+  padding: .5rem 1rem;
+}
+
+.aboutHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aboutHeaderTitle {
+  z-index: 0;
+  margin-left: -(12rem / 2);
+  width: 100%;
+  background: #f9f734;
+  line-height: 200%;
+}
+
+.aboutHeaderTitleText {
+  padding-left: 1rem + (12rem / 2);
+  padding-right: 1rem;
+}
+
+.avatar {
+  height: 12rem;
+  background: white;
+  border-radius: 12rem;
+  z-index: 1;
+}
