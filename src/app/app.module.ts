@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { GithubService } from '../shared/github.service';
+import { PrismicService } from '../shared/prismic.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { GithubService } from '../shared/github.service';
     FormsModule,
     HttpModule
   ],
-  providers: [GithubService],
+  providers: [GithubService, PrismicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

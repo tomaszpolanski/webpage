@@ -1,9 +1,16 @@
-<div class='header'>
-  <div class='aboutHeader'>
-    <img *ngIf="avatar" [src]='avatar' class='avatar' />
-    <div class='aboutHeaderTitle'>
-      <h1 class='aboutHeaderTitleText'>{{title}}</h1>
+<div>
+  <div class='header'>
+    <div class='aboutHeader'>
+      <img *ngIf="avatar" [src]='avatar' class='avatar' />
+      <div class='aboutHeaderTitle'>
+        <h1 class='aboutHeaderTitleText'>{{title}}</h1>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="htmlSections">
+    <div *ngFor="let section of htmlSections">
+      <h2>{{section.title}}</h2>
+      <div [innerHTML]='section.content'></div>
     </div>
   </div>
 </div>
-
