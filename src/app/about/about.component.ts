@@ -11,9 +11,11 @@ export class AboutComponent implements OnInit {
 
   shortSection: TextSection[];
   longSections: TextSection[];
+  fullSections: TextSection[];
 
   constructor(private prismic: PrismicService) {
     prismic.getAbout().subscribe(it => {
+      this.fullSections = it;
       this.shortSection = it.filter((textSection, index) => index % 2 === 0);
       this.longSections = it.filter((textSection, index) => index % 2 === 1);
     });

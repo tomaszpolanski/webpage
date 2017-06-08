@@ -9,6 +9,13 @@
           <td class="shortSectionFooter" [innerHTML]='shortSection[i].content'></td>
           <td class="longSectionFooter" [innerHTML]='longSections[i].content'></td>
         </tr>
-      </table>
+    </table>
+    <div class="verticalSection">
+      <div *ngFor="let section of fullSections" >
+        <h2 class="verticalSectionHeader">{{section.title}}</h2>
+        <td [innerHTML]='section.content'></td>
+      </div>
+    </div>
+
   </div>
 </div>

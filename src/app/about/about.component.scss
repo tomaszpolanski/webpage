@@ -47,17 +47,21 @@
     }
   }
 }
+
 .table {
-  display: flex;
-  width: 100%;
-  min-width: 100%;
+  display: none;
+
+  @include breakpoint(sm) {
+    display: flex;
+    width: 100%;
+    min-width: 100%;
+  }
 }
 
-
 %aboutSectionHeader {
-  color: $color_primary_font;
   text-align: left;
   border-bottom: 8px solid $color_primary;
+  font-size: 24px;
 }
 
 .shortSectionHeader {
@@ -71,14 +75,28 @@
 }
 
 .shortSectionFooter {
- vertical-align: top;
- padding-right: 1rem;
+  vertical-align: top;
+  padding-right: 1rem;
 }
 
 .longSectionFooter {
   vertical-align: top;
- padding-left: 1rem;
+  padding-left: 1rem;
 }
+
+.verticalSection {
+  display: flex;
+  flex-direction: column;
+  @include breakpoint(sm) {
+    display: none;
+  }
+} 
+
+.verticalSectionHeader {
+  @extend %aboutSectionHeader;
+  margin: 1rem 0;
+} 
+
 
 .aboutProgramming {
   display: flex;
@@ -87,12 +105,10 @@
   flex-wrap:wrap;
 }
 
-
 .aboutContactItems {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-
 }
 
 .contactItem {
@@ -128,8 +144,4 @@
   outline:none;
   text-decoration:none;
   color:inherit;
-}
-
-ul {
-  padding-left: 10rem;
 }
