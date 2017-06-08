@@ -12,7 +12,8 @@ export class AppComponent implements OnInit {
 
   title: string;
   avatar: string;
-  htmlSections: TextSection[];
+  shortSection: TextSection[];
+  longSections: TextSection[];
 
   constructor(private github: GithubService, private prismic: PrismicService) {
     github.githubUser()
@@ -20,7 +21,12 @@ export class AppComponent implements OnInit {
       this.title = it.name;
       this.avatar = it.avatar_url;
      } );
-    prismic.getAbout().subscribe(it => this.htmlSections = it);
+    prismic.getAbout().subscribe(it => {
+      this.shortSection = it.filter((textSection, index) => index % 2 === 0);
+      this.longSections = it.filter((textSection, index) => index % 2 === 1);
+      console.log('QQQ27', this.shortSection);
+      console.log('QQQ28', this.longSections);
+    });
   }
 
   ngOnInit(): void {

@@ -7,10 +7,18 @@
       </div>
     </div>
   </div>
-  <div *ngIf="htmlSections">
-    <div *ngFor="let section of htmlSections">
-      <h2>{{section.title}}</h2>
-      <div [innerHTML]='section.content'></div>
+  <div *ngIf="shortSection">
+    <div *ngFor="let section of shortSection; let i = index;">
+      <table >
+        <tr>
+          <th style="width:40%">{{shortSection[i].title}}</th>
+          <th style="width:60%">{{longSections[i].title}}</th> 
+        </tr>
+        <tr>
+          <td><div [innerHTML]='shortSection[i].content'></div></td>
+          <td><div [innerHTML]='longSections[i].content'></div></td> 
+        </tr>
+      </table>
     </div>
   </div>
 </div>
