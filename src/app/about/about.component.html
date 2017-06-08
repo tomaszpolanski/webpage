@@ -1,0 +1,14 @@
+<div class="mainContainer">
+  <div *ngIf="shortSection" class="aboutContent">
+    <table *ngFor="let section of shortSection; let i = index;" class="table" cellspacing="10">
+        <tr>
+          <th class="shortSectionHeader">{{shortSection[i].title}}</th>
+          <th class="longtSectionHeader">{{longSections[i].title}}</th> 
+        </tr>
+        <tr>
+          <td class="shortSectionFooter" [innerHTML]='shortSection[i].content'></td>
+          <td class="longSectionFooter" [innerHTML]='longSections[i].content'></td>
+        </tr>
+      </table>
+  </div>
+</div>
