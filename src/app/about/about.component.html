@@ -16,6 +16,9 @@
         <td [innerHTML]='section.content'></td>
       </div>
     </div>
-
+  <div class="left"
+  [@heroState]="state"
+  (click)="toggleState()">
+  </div>
   </div>
 </div>

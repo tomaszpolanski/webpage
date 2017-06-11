@@ -145,3 +145,15 @@
   text-decoration:none;
   color:inherit;
 }
+
+$size: 45px;
+
+.left {
+  background: #9e978e;
+  height: $size * 2;
+  width: $size;
+  border-bottom-left-radius: $size * 2;
+  border-top-left-radius: $size * 2;
+
+  transform-origin: 100% 50%;
+}
