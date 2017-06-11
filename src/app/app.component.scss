@@ -3,6 +3,10 @@
 
 $headerHeight: 20rem;
 $avatar_size: 12rem;
+$avatar_small_size: 8rem;
+
+
+
 
 .header {
   display: flex;
@@ -56,6 +60,9 @@ $avatar_size: 12rem;
   width: 100%;
   background: $color_primary;
   text-align: center;
+  @include breakpoint(xs) {
+    margin-left: -($avatar_small_size / 2);
+  }
 }
 
 .aboutHeaderTitleText {
@@ -63,6 +70,11 @@ $avatar_size: 12rem;
   margin: 1rem 0;
   padding-left: 1rem + ($avatar_size / 2);
   padding-right: 1rem;
+  @include breakpoint(xs) {
+    font-size: 1.9rem;
+    margin: .5rem 0;
+    padding-left: 1rem + ($avatar_small_size / 2);
+  }
 }
 
 .avatar {
@@ -70,4 +82,8 @@ $avatar_size: 12rem;
   background: white;
   border-radius: $avatar_size;
   z-index: 1;
+  @include breakpoint(xs) {
+    height: $avatar_small_size;
+    border-radius: $avatar_small_size;
+  }
 }
