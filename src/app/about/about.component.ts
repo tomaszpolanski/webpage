@@ -36,6 +36,28 @@ export class AboutComponent implements OnInit {
   longSections: TextSection[];
   fullSections: TextSection[];
   state: string;
+  label = 'Kotlin';
+  value = 80;
+  badges = [ {
+      label: 'Java',
+      value: 100,
+    }, {
+      label: 'C#',
+      value: 80,
+    }, {
+      label: 'F#',
+      value: 80,
+    }, {
+      label: 'Kotlin',
+      value: 70,
+    }, {
+      label: 'JS',
+      value: 70,
+    }, {
+      label: 'C++',
+      value: 50,
+    },
+  ];
 
   constructor(private prismic: PrismicService) {
     prismic.getAbout().subscribe(it => {

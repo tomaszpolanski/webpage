@@ -1,0 +1,25 @@
+@import '../../assets/styles/fonts.scss';
+@import '../../assets/styles/blocks.scss';
+
+$size: 10rem;
+
+.container {
+  position: relative;
+  height: $size;
+  width: $size;
+}
+
+.spinner {
+  height: $size;
+  width: $size;
+}
+
+label {
+  @extend %normalFont;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  height: $size;
+  width: $size;
+  line-height: $size;
+}

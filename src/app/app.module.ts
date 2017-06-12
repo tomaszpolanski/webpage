@@ -3,22 +3,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdProgressSpinnerModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { GithubService } from '../shared/github.service';
 import { PrismicService } from '../shared/prismic.service';
 import { AboutComponent } from './about/about.component';
+import { BadgeComponent } from '../shared/badge/badge.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent
+    AboutComponent,
+    BadgeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MdProgressSpinnerModule
   ],
   providers: [GithubService, PrismicService],
   bootstrap: [AppComponent]

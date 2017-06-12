@@ -1,6 +1,6 @@
 <div class="mainContainer">
   <div *ngIf="shortSection" class="aboutContent">
-    <table *ngFor="let section of shortSection; let i = index;" class="table" cellspacing="10">
+    <table *ngFor="let section of shortSection; let i = index;" class="table">
         <tr>
           <th class="shortSectionHeader">{{shortSection[i].title}}</th>
           <th class="longtSectionHeader">{{longSections[i].title}}</th> 
@@ -16,9 +16,14 @@
         <td [innerHTML]='section.content'></td>
       </div>
     </div>
-  <div class="left"
-  [@heroState]="state"
-  (click)="toggleState()">
-  </div>
+    <section class="programmingLang">
+      <h2 class="programmingLangHeader"> Programming Languages </h2> 
+      <div *ngFor="let badge of badges">
+        <app-badge
+            [value]="badge.value"
+            [label]="badge.label">
+        </app-badge>
+      </div>
+    </section>  
   </div>
 </div>
