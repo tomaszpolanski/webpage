@@ -2,15 +2,21 @@
   <div *ngIf="shortSection" class="aboutContent">
 
     <ng-template ngFor let-item [ngForOf]="fullSections" let-i="index" [ngForTrackBy]="trackByFn">
-      <md-card *ngIf="i % 2 == 0" class="sectionShort">
-        <h2>{{fullSections[i].title}}</h2>
-        <div [innerHTML]='fullSections[i].content'></div>
-      </md-card>
-      <md-card *ngIf="i % 2 == 1" class="sectionLong">
+      <md-card [ngClass]="i % 2 == 0 ? 'sectionShort' : 'sectionLong'">
         <h2>{{fullSections[i].title}}</h2>
         <div [innerHTML]='fullSections[i].content'></div>
       </md-card>
     </ng-template>
+
+    <md-card class="programmingLang">
+      <h2 class="programmingLangHeader"> Programming Languages </h2> 
+      <div *ngFor="let badge of badges">
+        <app-badge
+            [value]="badge.value"
+            [label]="badge.label">
+        </app-badge>
+      </div>
+    </md-card>
 
     <!--<table *ngFor="let section of shortSection; let i = index;" class="table">
         <tr>
