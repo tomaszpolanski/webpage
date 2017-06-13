@@ -36,8 +36,27 @@ export class PrismicService {
     return this.api.then((api: any) => api.query(Prismic.Predicates.at('document.type', typeId)));
   };
 
+  getContacts(): Observable<ContactSection> {
+    return Observable.fromPromise(this.getDocumentsOfType(documentTypes.contact).then((contact: any) => {
+    const contacts: Contact[] = contact.results[0]
+      .getGroup('contact.contact')
+      .toArray()
+      .map((it: any)  => {
+        return {
+          link: it.getText('link'),
+          description: it.getText('description'),
+          image: it.getImage('image').url,
+        };
+      });
+    return {
+      title: contact.results[0].getStructuredText('contact.title').asText(),
+      contacts,
+    };
+  }));
+  }
+
   getAbout(): Observable<TextSection[]> {
-    return Observable.fromPromise(Promise.resolve(this.getDocumentsOfType(documentTypes.about))
+    return Observable.fromPromise(this.getDocumentsOfType(documentTypes.about)
       .then((about: any) => {
         return about.results[0]
           .getGroup('aboutview.about-section')
