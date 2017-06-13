@@ -1,5 +1,5 @@
 <div class="mainContainer">
-  <div *ngIf="shortSection" class="aboutContent">
+  <div *ngIf="fullSections" class="aboutContent">
 
     <ng-template ngFor let-item [ngForOf]="fullSections" let-i="index" [ngForTrackBy]="trackByFn">
       <md-card [ngClass]="i % 2 == 0 ? 'sectionShort' : 'sectionLong'">
@@ -9,39 +9,13 @@
     </ng-template>
 
     <md-card class="programmingLang">
-      <h2 class="programmingLangHeader"> Programming Languages </h2> 
-      <div *ngFor="let badge of badges">
-        <app-badge
-            [value]="badge.value"
-            [label]="badge.label">
+      <h2> Programming Languages </h2> 
+      <div class="languages">
+        <app-badge *ngFor="let badge of badges"
+          [value]="badge.value"
+          [label]="badge.label">
         </app-badge>
       </div>
     </md-card>
-
-    <!--<table *ngFor="let section of shortSection; let i = index;" class="table">
-        <tr>
-          <th class="shortSectionHeader">{{shortSection[i].title}}</th>
-          <th class="longtSectionHeader">{{longSections[i].title}}</th> 
-        </tr>
-        <tr>
-          <td md-card-content class="shortSectionFooter" [innerHTML]='shortSection[i].content'></td>
-          <td md-card-content class="longSectionFooter" [innerHTML]='longSections[i].content'></td>
-        </tr>
-    </table>
-    <div class="verticalSection">
-      <div *ngFor="let section of fullSections" >
-        <h2 class="verticalSectionHeader">{{section.title}}</h2>
-        <td [innerHTML]='section.content'></td>
-      </div>
-    </div>
-    <section class="programmingLang">
-      <h2 class="programmingLangHeader"> Programming Languages </h2> 
-      <div *ngFor="let badge of badges">
-        <app-badge
-            [value]="badge.value"
-            [label]="badge.label">
-        </app-badge>
-      </div>
-    </section>  -->
   </div>
 </div>
