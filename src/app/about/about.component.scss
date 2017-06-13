@@ -16,20 +16,37 @@
 }
 
 .aboutContent {
-  overflow-x:auto;
   display: flex;
+  
+  flex: 1;
   line-height: 150%;
   justify-content: space-between;
-  flex-direction: row;
-  flex-flow: row wrap;
+flex-direction: column;
+  @include breakpoint(sm) {
+      
+        flex-direction: row;
+  flex-wrap: wrap;
+  }
 }
 
-%aboutSectionHeader {
+h2 {
   text-align: left;
   border-bottom: 8px solid $color_primary;
   font-size: 24px;
   padding: .5rem 0 1rem;
 }
+
+.sectionShort {
+  flex: 1 1 30%;
+  margin: 5px 5px 5px 0;
+}
+
+.sectionLong {
+  flex: 1 1 60%;
+  margin: 5px 5px 5px 0;
+}
+
+
 
 .programmingLang {
   display: flex;
@@ -41,7 +58,7 @@
 }
 
 .programmingLangHeader {
-  @extend %aboutSectionHeader;
+
   width: 100%;
 }
 
@@ -56,12 +73,12 @@
 }
 
 .shortSectionHeader {
-  @extend %aboutSectionHeader;
+
   width: 40rem;
 }
 
 .longtSectionHeader {
-  @extend %aboutSectionHeader;
+
   width: 70%;
 }
 
@@ -83,7 +100,7 @@
 } 
 
 .verticalSectionHeader {
-  @extend %aboutSectionHeader;
+
   margin: 1rem 0;
 } 
 
@@ -134,23 +151,4 @@
   outline:none;
   text-decoration:none;
   color:inherit;
-}
-
-$size: 45px;
-
-.left {
-  background: #9e978e;
-  height: $size * 2;
-  width: $size;
-  border-bottom-left-radius: $size * 2;
-  border-top-left-radius: $size * 2;
-
-  transform-origin: 100% 50%;
-}
-
-.example-section {
-  display: flex;
-  align-content: center;
-  align-items: center;
-  height: 60px;
 }

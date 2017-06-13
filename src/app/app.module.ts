@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdProgressSpinnerModule } from '@angular/material';
+import { MdProgressSpinnerModule, MdCardModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { GithubService } from '../shared/github.service';
@@ -22,7 +22,8 @@ import { BadgeComponent } from '../shared/badge/badge.component';
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdCardModule,
   ],
   providers: [GithubService, PrismicService],
   bootstrap: [AppComponent]

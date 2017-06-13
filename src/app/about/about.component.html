@@ -1,13 +1,25 @@
 <div class="mainContainer">
   <div *ngIf="shortSection" class="aboutContent">
-    <table *ngFor="let section of shortSection; let i = index;" class="table">
+
+    <ng-template ngFor let-item [ngForOf]="fullSections" let-i="index" [ngForTrackBy]="trackByFn">
+      <md-card *ngIf="i % 2 == 0" class="sectionShort">
+        <h2>{{fullSections[i].title}}</h2>
+        <div [innerHTML]='fullSections[i].content'></div>
+      </md-card>
+      <md-card *ngIf="i % 2 == 1" class="sectionLong">
+        <h2>{{fullSections[i].title}}</h2>
+        <div [innerHTML]='fullSections[i].content'></div>
+      </md-card>
+    </ng-template>
+
+    <!--<table *ngFor="let section of shortSection; let i = index;" class="table">
         <tr>
           <th class="shortSectionHeader">{{shortSection[i].title}}</th>
           <th class="longtSectionHeader">{{longSections[i].title}}</th> 
         </tr>
         <tr>
-          <td class="shortSectionFooter" [innerHTML]='shortSection[i].content'></td>
-          <td class="longSectionFooter" [innerHTML]='longSections[i].content'></td>
+          <td md-card-content class="shortSectionFooter" [innerHTML]='shortSection[i].content'></td>
+          <td md-card-content class="longSectionFooter" [innerHTML]='longSections[i].content'></td>
         </tr>
     </table>
     <div class="verticalSection">
@@ -24,6 +36,6 @@
             [label]="badge.label">
         </app-badge>
       </div>
-    </section>  
+    </section>  -->
   </div>
 </div>
