@@ -52,6 +52,10 @@ $avatar_small_size: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 10%;
+  @include breakpoint(xs) {
+    margin: 0;
+  }
 }
 
 .aboutHeaderTitle {
