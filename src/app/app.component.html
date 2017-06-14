@@ -1,7 +1,7 @@
 <div>
   <div class='header'>
     <div class='aboutHeader'>
-      <img *ngIf="avatar" [src]='avatar' class='avatar' />
+      <img *ngIf="avatar && title" [src]='avatar' class='avatar' />
       <div class='aboutHeaderTitle'>
         <h1 class='aboutHeaderTitleText'>{{title}}</h1>
       </div>

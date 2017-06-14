@@ -20,7 +20,12 @@
     <md-card *ngIf="contactsSection" class="contacts">
       <h2> {{contactsSection.title}} </h2> 
       <div class="contactItems">
-        <button md-fab color="primary" *ngFor="let contact of contactsSection.contacts" class="contactButton" >
+        <button 
+          md-fab color="primary" 
+          *ngFor="let contact of contactsSection.contacts" 
+          class="contactButton"
+          mdTooltip="{{contact.description}}"
+          mdTooltipPosition="above" >
           <a [href]="contact.link" class="contactLink">
             <img [src]='contact.image' alt={{contact.description}} class="contactIcon"/>
           </a>
