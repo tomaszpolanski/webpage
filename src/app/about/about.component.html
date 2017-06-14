@@ -17,5 +17,15 @@
         </app-badge>
       </div>
     </md-card>
+    <md-card *ngIf="contactsSection" class="contacts">
+      <h2> {{contactsSection.title}} </h2> 
+      <div class="contactItems">
+        <button md-fab color="primary" *ngFor="let contact of contactsSection.contacts" class="contactButton" >
+          <a href="{{contact.link}}" class="contactLink">
+            <img [src]='contact.image' alt={{contact.description}} class="contactIcon"/>
+          </a>
+        </button>
+      </div>
+    </md-card>
   </div>
 </div>
