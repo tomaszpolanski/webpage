@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 import Prismic from 'prismic.io';
+import { DomSanitizer } from '@angular/platform-browser';
 
 export interface Contact {
   link: string;
@@ -28,7 +29,7 @@ export class PrismicService {
 
   private api: any;
 
-  constructor() {
+  constructor(private sanitizer: DomSanitizer) {
     this.api = Prismic.api('https://websentation.prismic.io/api');
   }
 
@@ -43,7 +44,7 @@ export class PrismicService {
       .toArray()
       .map((it: any)  => {
         return {
-          link: it.getText('link'),
+          link: this.sanitizer.bypassSecurityTrustUrl(it.getText('link')),
           description: it.getText('description'),
           image: it.getImage('image').url,
         };

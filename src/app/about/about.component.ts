@@ -35,7 +35,7 @@ export class AboutComponent implements OnInit {
     value: 50,
   },
   ];
-  contactsSection: any;
+  contactsSection: ContactSection;
 
   constructor(
       private prismic: PrismicService,
@@ -44,18 +44,7 @@ export class AboutComponent implements OnInit {
     prismic.getAbout().subscribe(it => {
       this.fullSections = it;
     });
-    prismic.getContacts().subscribe(it => {
-
-      this.contactsSection = {
-        title: it.title,
-        contacts: it.contacts.map(({link, description, image}) => ({ link , description, image: sanitizer.bypassSecurityTrustResourceUrl(image) }))
-        
-      }
-      this.contactsSection.contacts
-      .forEach((itt, index) => iconRegistry.addSvgIcon(`tomek${index}`, itt.image));
-      iconRegistry.getNamedSvgIcon('tomek0').subscribe(iit => console.log('QQQ56', iit))
-      
-    });
+    prismic.getContacts().subscribe(it => this.contactsSection = it);
   }
 
   toggleState() {
