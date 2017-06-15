@@ -109,9 +109,10 @@ h2 {
 }
 
 .contacts {
-  display: inline;
   margin: 5px;
-  width: 100%;
+  @include breakpoint(sm) {
+    flex: 1 1 100%;
+  }
 }
 
 .contactItems {
