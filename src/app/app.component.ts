@@ -9,17 +9,7 @@ import { GithubService } from '../shared/github.service';
 })
 export class AppComponent implements OnInit {
 
-  title: string;
-  avatar: string;
-
-  constructor(private github: GithubService) {
-    github.githubUser()
-      .subscribe((it) =>  {
-      this.title = it.name;
-      this.avatar = it.avatar_url;
-     } );
-
-
+  constructor() {
   }
 
   ngOnInit(): void {
