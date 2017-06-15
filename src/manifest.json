@@ -10,5 +10,9 @@
     "src": "/assets/images/tomek.png",
     "sizes": "192x192",
     "type": "image/png"
+  }, {
+    "src": "/assets/images/tomek.png",
+    "sizes": "512x512",
+    "type": "image/png"
   }]
 }
