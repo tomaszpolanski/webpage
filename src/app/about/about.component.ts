@@ -12,9 +12,6 @@ import { PrismicService, TextSection, ContactSection } from '../../shared/prismi
 export class AboutComponent implements OnInit {
 
   fullSections: TextSection[];
-  state: string;
-  label = 'Kotlin';
-  value = 80;
   badges = [{
     label: 'Java',
     value: 100,
@@ -41,14 +38,8 @@ export class AboutComponent implements OnInit {
       private prismic: PrismicService,
       private iconRegistry: MdIconRegistry,
       private sanitizer: DomSanitizer) {
-    prismic.getAbout().subscribe(it => {
-      this.fullSections = it;
-    });
+    prismic.getAbout().subscribe(it =>  this.fullSections = it);
     prismic.getContacts().subscribe(it => this.contactsSection = it);
-  }
-
-  toggleState() {
-    this.state = this.state === 'active' ? 'inactive' : 'active';
   }
 
   ngOnInit() {
