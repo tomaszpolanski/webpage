@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry } from '@angular/material';
+import { Observable } from 'rxjs/Rx';
 
 import { PrismicService, TextSection, ContactSection, ProgrammingSection } from '../../shared/prismic.service';
 
@@ -11,17 +12,17 @@ import { PrismicService, TextSection, ContactSection, ProgrammingSection } from 
 })
 export class AboutComponent implements OnInit {
 
-  fullSections: TextSection[];
-  contactsSection: ContactSection;
-  programmingSection: ProgrammingSection;
+  fullSections: Observable<TextSection[]>;
+  contactsSection: Observable<ContactSection>;
+  programmingSection: Observable<ProgrammingSection>;
 
   constructor(
       private prismic: PrismicService,
       private iconRegistry: MdIconRegistry,
       private sanitizer: DomSanitizer) {
-    prismic.getProgrammingLanguages().subscribe(it =>  this.programmingSection = it);
-    prismic.getAbout().subscribe(it =>  this.fullSections = it);
-    prismic.getContacts().subscribe(it => this.contactsSection = it);
+    this.programmingSection = prismic.getProgrammingLanguages();
+    this.fullSections = prismic.getAbout();
+    this.contactsSection = prismic.getContacts();
   }
 
   ngOnInit() {

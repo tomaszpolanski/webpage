@@ -1,40 +1,30 @@
 <div class="mainContainer">
-  <div *ngIf="fullSections" class="aboutContent">
+  <md-card *ngFor="let section of (fullSections | async); let i = index" [ngClass]="i % 2 == 0 ? 'sectionShort' : 'sectionLong'">
+    <h2>{{section.title}}</h2>
+    <div [innerHTML]='section.content'></div>
+  </md-card>
 
-    <ng-template ngFor let-section [ngForOf]="fullSections" let-i="index">
-      <md-card [ngClass]="i % 2 == 0 ? 'sectionShort' : 'sectionLong'">
-        <h2>{{section.title}}</h2>
-        <div [innerHTML]='section.content'></div>
-      </md-card>
-    </ng-template>
-
-    <md-card *ngIf="programmingSection" class="programmingLang">
-      <h2> {{programmingSection.title}}  </h2> 
-      <div class="languages">
-        <app-badge *ngFor="let language of programmingSection.languages"
-          [value]="language.value"
-          [label]="language.label">
-        </app-badge>
-      </div>
-    </md-card>
-    <md-card *ngIf="contactsSection" class="contacts">
-      <h2> {{contactsSection.title}} </h2> 
-      <div class="contactItems">
-        <ng-template ngFor let-contact [ngForOf]="contactsSection.contacts">
-          <div class='contactItem'>
-            <button 
-              md-fab color="primary" 
-              class="contactButton"
-              mdTooltip="{{contact.description}}"
-              mdTooltipPosition="above" >
+  <md-card *ngIf="programmingSection | async; let section;" class="programmingLang">
+    <h2> {{section.title}} </h2>
+    <div class="languages">
+      <app-badge *ngFor="let language of section.languages" [value]="language.value" [label]="language.label">
+      </app-badge>
+    </div>
+  </md-card>
+  
+  <md-card *ngIf="contactsSection | async; let section;" class="contacts">
+    <h2> {{section.title}} </h2>
+    <div class="contactItems">
+      <ng-template ngFor let-contact [ngForOf]="section.contacts">
+        <div class='contactItem'>
+          <button md-fab color="primary" class="contactButton" mdTooltip="{{contact.description}}" mdTooltipPosition="above">
               <a [href]="contact.link" class="contactLink">
                 <img [src]='contact.image' alt={{contact.description}} class="contactIcon"/>
               </a>
             </button>
-            <label class='contactPrintLabel'>{{contact.description}}</label>
-          </div>
-        </ng-template>
-      </div>
-    </md-card>
-  </div>
+          <label class='contactPrintLabel'>{{contact.description}}</label>
+        </div>
+      </ng-template>
+    </div>
+  </md-card>
 </div>
