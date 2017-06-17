@@ -8,12 +8,12 @@
       </md-card>
     </ng-template>
 
-    <md-card class="programmingLang">
-      <h2> Programming Languages </h2> 
+    <md-card *ngIf="programmingSection" class="programmingLang">
+      <h2> {{programmingSection.title}}  </h2> 
       <div class="languages">
-        <app-badge *ngFor="let badge of badges"
-          [value]="badge.value"
-          [label]="badge.label">
+        <app-badge *ngFor="let language of programmingSection.languages"
+          [value]="language.value"
+          [label]="language.label">
         </app-badge>
       </div>
     </md-card>
