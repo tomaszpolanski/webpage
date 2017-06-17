@@ -3,6 +3,14 @@ import { Observable } from 'rxjs/Rx';
 import Prismic from 'prismic.io';
 import { DomSanitizer } from '@angular/platform-browser';
 
+export interface Section<T> {
+  order: number;
+  size: 'full' | 'long' | 'short';
+  kind: 'text' | 'programming';
+  title: string;
+  content: T[];
+}
+
 export interface Contact {
   link: string;
   description: string;
@@ -14,19 +22,9 @@ export interface ContactSection {
   contacts: Contact[];
 }
 
-export interface TextSection {
-  title: string;
-  content: string;
-}
-
 export interface Programming {
   label: string;
   value: number;
-}
-
-export interface ProgrammingSection {
-  title: string;
-  languages: Programming[];
 }
 
 const documentTypes = {
@@ -54,6 +52,8 @@ const badges: Programming[] = [{
   value: 50,
 },
 ];
+
+const programmingOrder = 2;
 
 @Injectable()
 export class PrismicService {
@@ -88,17 +88,25 @@ export class PrismicService {
       }));
   }
 
-  getProgrammingLanguages(): Observable<ProgrammingSection> {
-    return Observable.of({ title: 'Programming', languages: badges });
+  getProgrammingLanguages(): Observable<Section<Programming>> {
+    return Observable.of({
+      order: programmingOrder,
+      size: 'full',
+      kind: 'programming',
+      title: 'Programming',
+      content: badges });
   }
 
-  getAbout(): Observable<TextSection[]> {
+  getAbout(): Observable<Section<String>[]> {
     return this.getDocumentsOfType(documentTypes.about)
       .map((about: any) => {
         return about.results[0]
           .getGroup('aboutview.about-section')
           .toArray()
-          .map((it: any) => ({
+          .map((it: any, index: number) => ({
+            size: index % 2 === 0 ? 'short' : 'long',
+            order: index < programmingOrder ? index : index + 1,
+            kind: 'text',
             title: it.getText('title'),
             content: it.getStructuredText('content').asHtml(),
           }));

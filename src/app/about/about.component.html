@@ -1,17 +1,23 @@
 <div class="mainContainer">
-  <md-card *ngFor="let section of (fullSections | async); let i = index" [ngClass]="i % 2 == 0 ? 'sectionShort' : 'sectionLong'">
-    <h2>{{section.title}}</h2>
-    <div [innerHTML]='section.content'></div>
+<ng-template ngFor let-section [ngForOf]="allSection | async">
+  <div [ngSwitch]="section.kind" [ngClass]="section.size">
+    <md-card *ngSwitchCase="'text'" >
+      <h2>{{section.title}}</h2>
+      <div [innerHTML]='section.content'></div>
+    </md-card>
+    <md-card *ngSwitchCase="'programming'">
+      <h2> {{section.title}} </h2>
+      <div class="languages">
+        <app-badge *ngFor="let language of section.content" [value]="language.value" [label]="language.label">
+        </app-badge>
+      </div>
   </md-card>
-
-  <md-card *ngIf="programmingSection | async; let section;" class="programmingLang">
-    <h2> {{section.title}} </h2>
-    <div class="languages">
-      <app-badge *ngFor="let language of section.languages" [value]="language.value" [label]="language.label">
-      </app-badge>
+    <div *ngSwitchDefault >
+      {{section.kind}}
     </div>
-  </md-card>
-  
+  </div>
+</ng-template>
+
   <md-card *ngIf="contactsSection | async; let section;" class="contacts">
     <h2> {{section.title}} </h2>
     <div class="contactItems">

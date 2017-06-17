@@ -22,22 +22,21 @@ h2 {
   margin: .5rem 0;
 }
 
-.sectionShort {
+.short {
   margin: 5px;
   @include breakpoint(sm) {
     flex: 1 1 30%;
   }
 }
 
-.sectionLong {
+.long {
   margin: 5px;
   @include breakpoint(sm) {
     flex: 1 1 60%;
   }
 }
 
-.programmingLang {
-  overflow-x:auto;
+.full {
   display: flex;
   flex-direction: column;
   flex: 1 1 100%;
