@@ -1,7 +1,7 @@
 <div class="mainContainer">
   <div *ngIf="fullSections" class="aboutContent">
 
-    <ng-template ngFor let-section [ngForOf]="fullSections" let-i="index" [ngForTrackBy]="trackByFn">
+    <ng-template ngFor let-section [ngForOf]="fullSections" let-i="index">
       <md-card [ngClass]="i % 2 == 0 ? 'sectionShort' : 'sectionLong'">
         <h2>{{section.title}}</h2>
         <div [innerHTML]='section.content'></div>
@@ -31,7 +31,7 @@
                 <img [src]='contact.image' alt={{contact.description}} class="contactIcon"/>
               </a>
             </button>
-            <label class='contactPrintLabel'> {{contact.description}}</label>
+            <label class='contactPrintLabel'>{{contact.description}}</label>
           </div>
         </ng-template>
       </div>
