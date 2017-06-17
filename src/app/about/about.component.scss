@@ -124,8 +124,22 @@ h2 {
   flex: 1 1 100%;
 }
 
-
 $contactSize: 70px;
+
+.contactItem {
+    display: flex;
+    max-width: $contactSize * 2;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.contactPrintLabel {
+  @extend .print-only;
+
+  word-wrap: break-word;
+  text-align: center;
+}
 
 .contactButton {
   margin: 5px;
