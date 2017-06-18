@@ -97,7 +97,7 @@ export class PrismicService {
       order: programmingOrder,
       size: 'full',
       kind: 'programming',
-      title: 'Programming',
+      title: 'Programming Languages',
       content: badges });
   }
 
