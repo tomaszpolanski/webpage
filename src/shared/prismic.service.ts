@@ -32,6 +32,8 @@ const documentTypes = {
   contact: 'contact',
 };
 
+export type SectionType = String | Programming;
+
 const badges: Programming[] = [{
   label: 'Java',
   value: 100,

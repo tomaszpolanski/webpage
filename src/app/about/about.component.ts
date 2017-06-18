@@ -3,7 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MdIconRegistry } from '@angular/material';
 import { Observable } from 'rxjs/Rx';
 
-import { PrismicService, ContactSection, Section, Programming } from '../../shared/prismic.service';
+import { PrismicService, ContactSection, Section, Programming, SectionType } from '../../shared/prismic.service';
 
 @Component({
   selector: 'app-about',
@@ -13,15 +13,21 @@ import { PrismicService, ContactSection, Section, Programming } from '../../shar
 export class AboutComponent implements OnInit {
   contactsSection: Observable<ContactSection>;
 
-  allSection: Observable<Section<String | Programming>[]>;
+  allSection: Observable<Section<SectionType>[]>;
 
   constructor(
       private prismic: PrismicService,
       private iconRegistry: MdIconRegistry,
       private sanitizer: DomSanitizer) {
     this.contactsSection = prismic.getContacts();
-    this.allSection = Observable.combineLatest(prismic.getProgrammingLanguages(), prismic.getAbout(),
-      (p, t) => [p, ...t].sort( (f: Section<any>, s: Section<any>) => f.order - s.order )).share();
+
+    Observable.of([1], [2]).reduce<number[]>((acc: number[], value) => value)
+
+    this.allSection = Observable.merge(prismic.getProgrammingLanguages() .map( it => [it] ),
+      prismic.getAbout())
+      .reduce<Section<SectionType>[]>(
+      (acc: Section<SectionType>[], value) => acc.concat(value))
+      .map(it => it.sort((f, s) => f.order - s.order ));
   }
 
   ngOnInit() {
