@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdProgressSpinnerModule, MdCardModule, MdButtonModule, MaterialModule } from '@angular/material';
+import { MdProgressSpinnerModule, MdCardModule, MdButtonModule, MdTooltipModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { GithubService } from '../shared/github.service';
@@ -19,10 +18,13 @@ import { BadgeComponent } from '../shared/badge/badge.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     BrowserAnimationsModule,
-    MaterialModule,
+
+    MdCardModule,
+    MdProgressSpinnerModule,
+    MdButtonModule,
+    MdTooltipModule,
   ],
   providers: [GithubService, PrismicService],
   bootstrap: [AppComponent]

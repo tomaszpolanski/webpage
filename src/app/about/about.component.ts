@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MdIconRegistry } from '@angular/material';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/reduce';
 
-import { PrismicService, ContactSection, Section, Programming, SectionType } from '../../shared/prismic.service';
+import { PrismicService, ContactSection, Section, SectionType } from '../../shared/prismic.service';
 
 @Component({
   selector: 'app-about',
@@ -16,9 +15,7 @@ export class AboutComponent implements OnInit {
   allSection: Observable<Section<SectionType>[]>;
 
   constructor(
-      private prismic: PrismicService,
-      private iconRegistry: MdIconRegistry,
-      private sanitizer: DomSanitizer) {
+      private prismic: PrismicService) {
     this.contactsSection = prismic.getContacts();
 
     Observable.of([1], [2]).reduce<number[]>((acc: number[], value) => value)
