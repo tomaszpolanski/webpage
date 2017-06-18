@@ -72,9 +72,9 @@ export class PrismicService {
     return Observable.fromPromise(this.api.then((api: any) => api.query(Prismic.Predicates.at('document.type', typeId))));
   };
 
-  getContacts(): Observable<ContactSection> {
+  getContacts() {
     return this.getDocumentsOfType(documentTypes.contact)
-      .map(((contact: any) => {
+      .map(((contact: any): ContactSection => {
         const contacts: Contact[] = contact.results[0]
           .getGroup('contact.contact')
           .toArray()
@@ -101,13 +101,13 @@ export class PrismicService {
       content: badges });
   }
 
-  getAbout(): Observable<Section<String>[]> {
+  getAbout() {
     return this.getDocumentsOfType(documentTypes.about)
-      .map((about: any) => {
+      .map((about: any): Section<String>[] => {
         return about.results[0]
           .getGroup('aboutview.about-section')
           .toArray()
-          .map((it: any, index: number) => ({
+          .map((it: any, index: number): Section<String> => ({
             size: index % 2 === 0 ? 'short' : 'long',
             order: index < programmingOrder ? index : index + 1,
             kind: 'text',
