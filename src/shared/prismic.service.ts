@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/observable/of';
 import Prismic from 'prismic.io';
 import { DomSanitizer } from '@angular/platform-browser';
 
