@@ -24,7 +24,7 @@
       <ng-template ngFor let-contact [ngForOf]="section.contacts">
         <div class='contactItem'>
           <button md-fab color="primary" class="contactButton" mdTooltip="{{contact.description}}" mdTooltipPosition="above">
-              <a [href]="contact.link" class="contactLink">
+              <a [href]="contact.link" target="_blank" class="contactLink">
                 <img [src]='contact.image' alt={{contact.description}} class="contactIcon"/>
               </a>
             </button>
