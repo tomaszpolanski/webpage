@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromPromise';
 import 'rxjs/add/observable/of';
 import Prismic from 'prismic.io';
-import { DomSanitizer } from '@angular/platform-browser';
 
 export interface Section<T> {
   order: number;
@@ -59,7 +58,7 @@ export class PrismicService {
 
   private api: any;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor() {
     this.api = Prismic.api('https://websentation.prismic.io/api');
   }
 
@@ -73,11 +72,11 @@ export class PrismicService {
         const contacts: Contact[] = contact.results[0]
           .getGroup('contact.contact')
           .toArray()
-          .map((it: any) => {
+          .map(it => {
             return {
-              link: this.sanitizer.bypassSecurityTrustUrl(it.getText('link')),
-              description: it.getText('description'),
-              image: it.getImage('image').url,
+              link: it.getText('link') as string,
+              description: it.getText('description') as string,
+              image: it.getImage('image').url as string,
             };
           });
         return {
@@ -104,7 +103,7 @@ export class PrismicService {
         return about.results[0]
           .getGroup('aboutview.about-section')
           .toArray()
-          .map((it: any, index: number): Section<String> => ({
+          .map((it, index: number): Section<String> => ({
             size: index % 2 === 0 ? 'short' : 'long',
             order: index < programmingOrder ? index : index + 1,
             kind: 'text',

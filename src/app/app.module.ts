@@ -7,6 +7,7 @@ import { MdProgressSpinnerModule, MdCardModule, MdButtonModule, MdTooltipModule 
 import { AppComponent } from './app.component';
 import { GithubService } from '../shared/github.service';
 import { PrismicService } from '../shared/prismic.service';
+import { GoogleAnalytics } from '../shared/google-analytics.service';
 import { AboutComponent } from './about/about.component';
 import { BadgeComponent } from '../shared/badge/badge.component';
 
@@ -26,7 +27,7 @@ import { BadgeComponent } from '../shared/badge/badge.component';
     MdButtonModule,
     MdTooltipModule,
   ],
-  providers: [GithubService, PrismicService],
+  providers: [GithubService, PrismicService, GoogleAnalytics],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

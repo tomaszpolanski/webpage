@@ -18,7 +18,7 @@
           <ng-template ngFor let-contact [ngForOf]="section.content">
             <div class='contactItem'>
               <button md-fab color="primary" class="contactButton" mdTooltip="{{contact.description}}" mdTooltipPosition="above">
-              <a [href]="contact.link" target="_blank" class="contactLink">
+              <a [href]="sanitizer.bypassSecurityTrustUrl(contact.link)" target="_blank" class="contactLink" (click)="contactPressed(contact.link)">
                 <img [src]='contact.image' alt={{contact.description}} class="contactIcon"/>
               </a>
             </button>
