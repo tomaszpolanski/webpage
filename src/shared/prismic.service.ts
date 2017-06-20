@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export interface Section<T> {
   order: number;
   size: 'full' | 'long' | 'short';
-  kind: 'text' | 'programming';
+  kind: 'text' | 'programming' | 'contact';
   title: string;
   content: T[];
 }
@@ -17,11 +17,6 @@ export interface Contact {
   link: string;
   description: string;
   image: string;
-}
-
-export interface ContactSection {
-  title: string;
-  contacts: Contact[];
 }
 
 export interface Programming {
@@ -34,7 +29,7 @@ const documentTypes = {
   contact: 'contact',
 };
 
-export type SectionType = String | Programming;
+export type SectionType = String | Programming | Contact;
 
 const badges: Programming[] = [{
   label: 'Java',
@@ -74,7 +69,7 @@ export class PrismicService {
 
   getContacts() {
     return this.getDocumentsOfType(documentTypes.contact)
-      .map(((contact: any): ContactSection => {
+      .map<any, Section<Contact>>((contact => {
         const contacts: Contact[] = contact.results[0]
           .getGroup('contact.contact')
           .toArray()
@@ -86,24 +81,26 @@ export class PrismicService {
             };
           });
         return {
-          title: contact.results[0].getStructuredText('contact.title').asText(),
-          contacts,
+          order: 100,
+          kind: 'contact',
+          size: 'full',
+          title: '' + contact.results[0].getStructuredText('contact.title').asText(),
+          content: contacts,
         };
       }));
   }
 
-  getProgrammingLanguages(): Observable<Section<Programming>> {
-    return Observable.of({
+  getProgrammingLanguages = () =>
+    Observable.of<Section<Programming>>({
       order: programmingOrder,
       size: 'full',
       kind: 'programming',
       title: 'Programming Languages',
-      content: badges });
-  }
+      content: badges })
 
   getAbout() {
     return this.getDocumentsOfType(documentTypes.about)
-      .map((about: any): Section<String>[] => {
+      .map<any, Section<String>[]>(about => {
         return about.results[0]
           .getGroup('aboutview.about-section')
           .toArray()

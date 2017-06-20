@@ -37,10 +37,10 @@ h2 {
 }
 
 .full {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 100%;
   margin: 5px;
+  @include breakpoint(sm) {
+    flex: 1 1 100%;
+  }
 }
 
 .languages {
