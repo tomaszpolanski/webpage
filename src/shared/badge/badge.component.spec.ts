@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MdProgressSpinnerModule, MdCardModule, MdButtonModule, MdTooltipModule } from '@angular/material';
 
 import { BadgeComponent } from './badge.component';
 
@@ -8,9 +9,12 @@ describe('BadgeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BadgeComponent ]
+      declarations: [BadgeComponent],
+      imports: [
+        MdProgressSpinnerModule,
+      ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

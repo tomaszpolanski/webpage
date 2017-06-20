@@ -89,13 +89,14 @@ export class PrismicService {
       }));
   }
 
-  getProgrammingLanguages = () =>
-    Observable.of<Section<Programming>>({
+  getProgrammingLanguages() {
+    return Observable.of<Section<Programming>>({
       order: programmingOrder,
       size: 'full',
       kind: 'programming',
       title: 'Programming Languages',
-      content: badges })
+      content: badges });
+  }
 
   getAbout() {
     return this.getDocumentsOfType(documentTypes.about)

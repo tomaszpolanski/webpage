@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { DomSanitizer } from '@angular/platform-browser';
 import 'rxjs/add/operator/reduce';
+import 'rxjs/add/observable/merge';
 
 import { PrismicService, Section, SectionType } from '../../shared/prismic.service';
 import { GoogleAnalytics } from '../../shared/google-analytics.service';

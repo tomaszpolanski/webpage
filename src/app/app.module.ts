@@ -27,7 +27,11 @@ import { BadgeComponent } from '../shared/badge/badge.component';
     MdButtonModule,
     MdTooltipModule,
   ],
-  providers: [GithubService, PrismicService, GoogleAnalytics],
+  providers: [
+    GithubService,
+    PrismicService,
+    GoogleAnalytics,
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
