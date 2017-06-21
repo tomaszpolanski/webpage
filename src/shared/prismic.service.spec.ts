@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-import Prismic from 'prismic.io';
 
 import { PrismicService } from './prismic.service';
 

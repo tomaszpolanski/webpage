@@ -7,8 +7,8 @@ export class GoogleAnalytics {
 
   public emitEvent(eventCategory: string,
     eventAction: string,
-    eventLabel: string = null,
-    eventValue: number = null) {
+    eventLabel?: string,
+    eventValue?: number) {
     ga('send', 'event', {
       eventCategory: eventCategory,
       eventLabel: eventLabel,

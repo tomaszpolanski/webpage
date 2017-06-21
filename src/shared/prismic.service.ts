@@ -72,7 +72,7 @@ export class PrismicService {
         const contacts: Contact[] = contact.results[0]
           .getGroup('contact.contact')
           .toArray()
-          .map(it => {
+          .map((it: any) => {
             return {
               link: it.getText('link') as string,
               description: it.getText('description') as string,
@@ -104,7 +104,7 @@ export class PrismicService {
         return about.results[0]
           .getGroup('aboutview.about-section')
           .toArray()
-          .map((it, index: number): Section<String> => ({
+          .map((it: any, index: number): Section<String> => ({
             size: index % 2 === 0 ? 'short' : 'long',
             order: index < programmingOrder ? index : index + 1,
             kind: 'text',
