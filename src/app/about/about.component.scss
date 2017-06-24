@@ -1,5 +1,6 @@
 @import '../../assets/styles/fonts.scss';
 @import '../../assets/styles/blocks.scss';
+@import '../../assets/styles/animations.scss';
 
 .mainContainer {
   display: flex;
@@ -24,6 +25,7 @@ h2 {
 
 .short {
   margin: 5px;
+  animation: .5s ease-out 0s 1 slideIn;
   @include breakpoint(sm) {
     flex: 1 1 30%;
   }
@@ -31,6 +33,7 @@ h2 {
 
 .long {
   margin: 5px;
+  animation: .5s ease-out 0s 1 slideIn;
   @include breakpoint(sm) {
     flex: 1 1 60%;
   }
