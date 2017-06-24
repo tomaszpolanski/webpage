@@ -15,7 +15,18 @@ const TEXT_SECTION_TITLE = 'Some section';
 
 class MockPrismicService {
   getContacts(): Observable<Section<Contact>> {
-    return Observable.empty();
+    const section: Section<Contact> = {
+      order: 0,
+      size: 'full',
+      kind: 'contact',
+      title: 'Contacts',
+      content: [{
+        link: '',
+        description: 'contact',
+        image: 'img',
+      }],
+    };
+    return Observable.of(section);
   }
   getProgrammingLanguages(): Observable<Section<Programming>> {
     return Observable.empty();
@@ -69,5 +80,12 @@ describe('AboutComponent', () => {
     const sections = fixture.debugElement.query(By.css('.short'));
 
     expect(sections.nativeElement.querySelector('h2').textContent).toBe(TEXT_SECTION_TITLE);
+  });
+
+  it('creates contact sections', () => {
+    const sections = fixture.debugElement.query(By.css('.full'));
+
+    expect(sections.nativeElement.querySelector('a'))
+    .toBeUndefined();
   });
 });
