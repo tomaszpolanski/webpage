@@ -86,6 +86,6 @@ describe('AboutComponent', () => {
     const sections = fixture.debugElement.query(By.css('.full'));
 
     expect(sections.nativeElement.querySelector('a'))
-    .toBeUndefined();
+    .toBeDefined();
   });
 });
