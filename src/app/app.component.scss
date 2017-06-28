@@ -1,12 +1,10 @@
 @import '../assets/styles/fonts.scss';
 @import '../assets/styles/blocks.scss';
+@import '../assets/styles/animations.scss';
 
 $headerHeight: 20rem;
 $avatar_size: 12rem;
 $avatar_small_size: 8rem;
-
-
-
 
 .header {
   display: flex;
@@ -21,38 +19,12 @@ $avatar_small_size: 8rem;
   padding: .5rem 1rem;
 }
 
-.shadow {
-  @extend .no-print;
-  height: 1px;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.16), 0 2px 8px 0 rgba(0, 0, 0, 0.12);  
-}
-
-.navbar {
-  min-width: 50%;
-  margin-top: auto;
-}
-
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-}
-
-.mainContainerFull {
-  @extend .mainContainer;
-  height: 100vh;
-}
-
-.contentWrapper {
-  display: flex;
-  flex: 1;
-}
-
 .aboutHeader {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 10%;
+  animation: .5s ease-out 0s 1 slideIn;
   @include breakpoint(xs) {
     margin: 0;
   }
@@ -81,11 +53,20 @@ $avatar_small_size: 8rem;
   }
 }
 
+.avatarContainer {
+  height: $avatar_size;
+  width: $avatar_size;
+  z-index: 1;
+  @include breakpoint(xs) {
+    height: $avatar_small_size;
+    width: $avatar_small_size;
+  }
+}
 .avatar {
   height: $avatar_size;
   background: white;
   border-radius: $avatar_size;
-  z-index: 1;
+  z-index: 2;
   @include breakpoint(xs) {
     height: $avatar_small_size;
     border-radius: $avatar_small_size;
