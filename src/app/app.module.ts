@@ -5,9 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdProgressSpinnerModule, MdCardModule, MdButtonModule, MdTooltipModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { GithubService } from '../shared/github.service';
-import { PrismicService } from '../shared/prismic.service';
-import { GoogleAnalytics } from '../shared/google-analytics.service';
+import {
+  PrismicService,
+  GoogleAnalytics,
+  GithubService,
+  FeedbackService
+} from '../shared';
 import { AboutComponent } from './about/about.component';
 import { BadgeComponent } from '../shared/badge/badge.component';
 
@@ -31,7 +34,8 @@ import { BadgeComponent } from '../shared/badge/badge.component';
     GithubService,
     PrismicService,
     GoogleAnalytics,
-    ],
+    FeedbackService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

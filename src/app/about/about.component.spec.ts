@@ -5,9 +5,8 @@ import 'rxjs/add/observable/empty';
 
 import { AboutComponent } from './about.component';
 import { BadgeComponent } from '../../shared/badge/badge.component';
-import { GithubService } from '../../shared/github.service';
 import { PrismicService, Section, Contact, Programming } from '../../shared/prismic.service';
-import { GoogleAnalytics } from '../../shared/google-analytics.service';
+import { GoogleAnalytics, GithubService, FeedbackService } from '../../shared';
 
 class MockPrismicService {
   getContacts(): Observable<Section<Contact>> {
@@ -38,7 +37,8 @@ describe('AboutComponent', () => {
       providers: [
         GithubService,
         { provide: PrismicService, useClass: MockPrismicService },
-        GoogleAnalytics
+        GoogleAnalytics,
+        FeedbackService,
       ],
     })
       .compileComponents();

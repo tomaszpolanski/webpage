@@ -5,7 +5,7 @@ import 'rxjs/add/operator/reduce';
 import 'rxjs/add/observable/merge';
 
 import { PrismicService, Section, SectionType } from '../../shared/prismic.service';
-import { GoogleAnalytics } from '../../shared/google-analytics.service';
+import { GoogleAnalytics, FeedbackService } from '../../shared';
 
 @Component({
   selector: 'app-about',
@@ -18,7 +18,8 @@ export class AboutComponent implements OnInit {
   constructor(
     public sanitizer: DomSanitizer,
     private prismic: PrismicService,
-    private analytics: GoogleAnalytics) {
+    private analytics: GoogleAnalytics,
+    private feedback: FeedbackService) {
 
     this.allSection = Observable.merge(prismic.getProgrammingLanguages().map(it => [it]),
       prismic.getContacts().map(it => [it]),
@@ -29,7 +30,9 @@ export class AboutComponent implements OnInit {
   }
 
   contactPressed(url: string) {
+    console.log('QQQ32', 'sadfasdfsfde');
     this.analytics.emitEvent('contact', url);
+    this.feedback.tap();
   }
 
   ngOnInit() {
