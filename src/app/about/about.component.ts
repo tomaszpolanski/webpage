@@ -30,9 +30,8 @@ export class AboutComponent implements OnInit {
   }
 
   contactPressed(url: string) {
-    console.log('QQQ32', 'sadfasdfsfde');
-    this.analytics.emitEvent('contact', url);
     this.feedback.tap();
+    this.analytics.emitEvent('contact', url);
   }
 
   ngOnInit() {

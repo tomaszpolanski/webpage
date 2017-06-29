@@ -73,14 +73,15 @@ h2 {
   flex: 1 1 100%;
 }
 
-$contactSize: 70px;
+$contactSize: 56px;
 
 .contactItem {
-    display: flex;
-    max-width: $contactSize * 2;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  max-width: $contactSize * 2;
+  margin: 1rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .contactPrintLabel {
@@ -90,24 +91,11 @@ $contactSize: 70px;
   text-align: center;
 }
 
-.contactButton {
-  margin: 5px;
-  width: $contactSize;    
-  height: $contactSize;
-}
-
 .contactLink {
-  position: relative;
-  top: 0;
+  margin: 2rem;
 }
-
-.contactIcon { 
-  padding: 1rem;      
-  width: 2rem;
-  height: 2rem;
-  pointer-events: none;
-  position: relative;
-  top: 0;
+.contactIcon {    
+  padding: .7rem; 
   width: $contactSize;    
   height: $contactSize;
 }
