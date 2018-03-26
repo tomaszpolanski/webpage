@@ -34,20 +34,20 @@ const badges: Programming[] = [{
   label: 'Java',
   value: 100,
 }, {
+  label: 'Kotlin',
+  value: 95,
+}, {
   label: 'C#',
   value: 80,
 }, {
   label: 'F#',
   value: 80,
 }, {
-  label: 'Kotlin',
+  label: 'Dart',
   value: 70,
 }, {
   label: 'JS',
-  value: 70,
-}, {
-  label: 'C++',
-  value: 50,
+  value: 60,
 },
 ];
 
