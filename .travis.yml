@@ -32,10 +32,8 @@ script:
   - ng test --single-run
   - ng build --prod
 
-deploy:
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN --non-interactive
 
 notifications:
   email:
