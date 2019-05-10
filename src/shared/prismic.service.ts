@@ -31,20 +31,20 @@ const documentTypes = {
 export type SectionType = String | Programming | Contact;
 
 const badges: Programming[] = [{
-  label: 'Java',
+  label: 'Dart',
   value: 100,
 }, {
   label: 'Kotlin',
   value: 95,
+}, {
+  label: 'Java',
+  value: 90,
 }, {
   label: 'C#',
   value: 80,
 }, {
   label: 'F#',
   value: 80,
-}, {
-  label: 'Dart',
-  value: 70,
 }, {
   label: 'JS',
   value: 60,
@@ -95,7 +95,8 @@ export class PrismicService {
       size: 'full',
       kind: 'programming',
       title: 'Programming Languages',
-      content: badges });
+      content: badges
+    });
   }
 
   getAbout() {
