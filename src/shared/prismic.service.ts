@@ -35,7 +35,7 @@ const badges: Programming[] = [{
   value: 100,
 }, {
   label: 'Kotlin',
-  value: 95,
+  value: 94,
 }, {
   label: 'Java',
   value: 90,
